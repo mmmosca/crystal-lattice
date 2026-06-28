@@ -1,6 +1,7 @@
 # Project changes
 
 ## [0.1.0]
+    - Add cmake variable for testing
     - Fix missing include
     - Set cmake standards
     - Update copyright
