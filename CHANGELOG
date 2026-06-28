@@ -1,6 +1,7 @@
 # Project changes
 
 ## [0.1.0]
+    - Bump periodic_point_cloud dep to 0.1.1
     - Add cmake variable for testing
     - Fix missing include
     - Set cmake standards

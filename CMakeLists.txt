@@ -45,7 +45,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Eigen3)
 FetchContent_Declare(
     periodic_point_cloud
-    URL https://github.com/mmmosca/periodic-point-cloud/archive/refs/tags/0.1.0.tar.gz
+    URL https://github.com/mmmosca/periodic-point-cloud/archive/refs/tags/0.1.1.tar.gz
 )
 FetchContent_MakeAvailable(periodic_point_cloud)
 
