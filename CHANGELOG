@@ -1,4 +1,5 @@
 # Project changes
 
+    - Add CI and documentation
     - Add Cmake and source files
     - Subproject extracted from VoronoiLatticeDistances
