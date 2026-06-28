@@ -1,6 +1,7 @@
 # Project changes
 
 ## [0.1.0]
+    - Set cmake standards
     - Update copyright
     - Add CI and documentation
     - Add Cmake and source files
