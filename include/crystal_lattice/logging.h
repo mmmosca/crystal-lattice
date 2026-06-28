@@ -19,6 +19,7 @@ along with crystal-lattice. If not, see <https://www.gnu.org/licenses/>.
 #define _LOGGING_H
 
 #include <string>
+#include <memory>
 
 enum class LogLevel {
     LOGDEBUG = 0,
