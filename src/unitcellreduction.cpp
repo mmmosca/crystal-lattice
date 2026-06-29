@@ -322,9 +322,9 @@ Eigen::Matrix3d reduceUnitCell(std::vector<double> &cell_parameters, Eigen::Matr
 		case 1: {
 			if (reduced) {
 				Logger::debug("|--> Step 1:\n\t"\
-					+ to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()) + "\n\t"\
-					+ to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
-					+ to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()));
+					+ std::to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()) + "\n\t"\
+					+ std::to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
+					+ std::to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()));
 				reducing_room.push(std::make_tuple(axis_vector[2], axis_vector[1], axis_vector[0], 1));
 			}
 			else {
@@ -337,17 +337,17 @@ Eigen::Matrix3d reduceUnitCell(std::vector<double> &cell_parameters, Eigen::Matr
 		case 2: {
 			if (reduced) {
 				Logger::debug("|--> Step 2:\n\t"\
-					+ to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()) + "\n\t"\
-					+ to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
-					+ to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()));
+					+ std::to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()) + "\n\t"\
+					+ std::to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
+					+ std::to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()));
 				reducing_room.push(std::make_tuple(axis_vector[2], axis_vector[1], axis_vector[0], 1));
 			}
 			else {
 				// Second couple -> Check the viceversa and push the shortest one with the last one
 				Logger::debug("|--> Step 2:\n\t"\
-					+ to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
-					+ to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()) + "\n\t"\
-					+ to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()));
+					+ std::to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
+					+ std::to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()) + "\n\t"\
+					+ std::to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()));
 				reducing_room.push(std::make_tuple(axis_vector[0], axis_vector[2], axis_vector[1], 0));
 				reducing_room.push(std::make_tuple(axis_vector[1], axis_vector[0], axis_vector[2], 3));
 			}
@@ -357,9 +357,9 @@ Eigen::Matrix3d reduceUnitCell(std::vector<double> &cell_parameters, Eigen::Matr
 			// Last step: first 2 couple have been fixed -> check the last combination
 			if (reduced) {
 				Logger::debug("|--> Step 3:\n\t"\
-					+ to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()) + "\n\t"\
-					+ to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
-					+ to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()));
+					+ std::to_string(ref) + ":\t" + std::to_string(refVector->x()) + ',' + std::to_string(refVector->y()) + ',' + std::to_string(refVector->z()) + "\n\t"\
+					+ std::to_string(red) + ":\t" + std::to_string(toReduce->x()) + ',' + std::to_string(toReduce->y()) + ',' + std::to_string(toReduce->z()) + "\n\t"\
+					+ std::to_string(wait) + ":\t" + std::to_string(waiting->x()) + ',' + std::to_string(waiting->y()) + ',' + std::to_string(waiting->z()));
 				// Enqueue to start from the beginning to check if they need to be reduced each other
 				reducing_room.push(std::make_tuple(axis_vector[2], axis_vector[1], axis_vector[0], 1));
 			}

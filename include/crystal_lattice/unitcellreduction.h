@@ -26,8 +26,17 @@ along with crystal-lattice. If not, see <https://www.gnu.org/licenses/>.
 #include <queue>
 #include <map>
 
-enum class UnitCellReductionMode {Niggli, Buerger};
-
+/**
+ * @brief Reduces the Unit Cell with Niggli's algorithm.
+ * @param cell_parameters Unit cell parameters in the order
+ *        `{||a||, ||b||, ||c||, alpha, beta, gamma}`.
+ *        The first three values are edge lengths and the last three are
+ *        their opposite angles (degrees).
+ * 
+ * @param transform A non-initialized matrix. After the call it will be the transformation matrix the can be used to transform any point to the new Cartesian system.
+ * @param total_reduced Non-initialized boolean. After the call it will store True if the unit cell needed reduction, otherwise False.
+ * @return The new Cartesian system with vector bases as columns.
+ */
 Eigen::Matrix3d reduceUnitCell(std::vector<double> &cell_parameters, Eigen::Matrix3d &transform, bool &total_reduced);
 
 #endif // !_UNITCELLREDUCTION_H

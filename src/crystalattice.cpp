@@ -18,7 +18,7 @@ along with crystal-lattice. If not, see <https://www.gnu.org/licenses/>.
 #include <crystal_lattice/crystalattice.h>
 
 /**************************\
-|*******  UNITCELL  *******|
+|****  LATTICEUNITCELL  ***|
 \**************************/
 
 double LatticeUnitCell::getVolume() {
