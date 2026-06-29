@@ -23,26 +23,28 @@ along with crystal-lattice. If not, see <https://www.gnu.org/licenses/>.
 #include <vector>
 #include <Eigen/Dense>
 #include <cmath>
-#include <assert.h>
+#include <cassert>
 
-
-#define ROUND_D	20
 #define math_sign(X) ((X) < 0.f) ? -1 : 1
-#define MAX(X,Y)	((X)>=(Y)) ? (X) : (Y)
-#define MIN(X,Y)	((X)<=(Y)) ? (X) : (Y)
-
-enum class Axis {X,Y,Z};
-
-using namespace std;
 
 constexpr double pi = 3.14159265358979323846;
 
+/**
+ * @brief Rounds the value `i` to the `n-th` decimal.
+ * @param i Value to be rounded.
+ * @param n `n-th` decimal to which `i` is rounded to.
+ * @return Rounded value.
+ */
 double roundToNthDecimal(double i, int n);
 
-/* 
-*	This function returns the Cartesian vector components of the 3 unit cell axis 
-*	param1 : vector of lengths (a, b, c) and angles (alpha, beta, gamma)
-*/
-Eigen::Matrix3d getCartesianSystem(std::vector<double> params);
+/**
+ * @brief Gets the vector components of the Cartesian system identified by the cell parameters.
+ * @param cell_parameters Unit cell parameters in the order
+ *        `{||a||, ||b||, ||c||, alpha, beta, gamma}`.
+ *        The first three values are edge lengths and the last three are
+ *        their opposite angles (degrees).
+ * @return The new Cartesian system with vector bases as columns.
+ */
+Eigen::Matrix3d getCartesianSystem(std::vector<double> cell_parameters);
 
 #endif // !_GEOM_H

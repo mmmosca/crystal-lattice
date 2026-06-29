@@ -20,60 +20,104 @@ along with crystal-lattice. If not, see <https://www.gnu.org/licenses/>.
 
 #include <stdio.h>
 #include <Eigen/Dense>
-#include <set>
-#include <map>
-#include <iterator>
 #include <string>
 #include <vector>
-#include <iostream>
-#include <fstream>
-#include <thread> // Standard library threads
 
 #include <crystal_lattice/geom.h>
 #include <crystal_lattice/unitcellreduction.h>
 #include <periodic_point_cloud/periodicpointcloud.h>
 
+/** 
+ * @brief Unit Cell of a 3D crystal.
+ */
 class LatticeUnitCell {
 public:
+	/**
+     * @brief Unit cell parameters in the order
+     * 	`{||a||, ||b||, ||c||, alpha, beta, gamma}`.
+     * 	The first three values are edge lengths and the last three are
+     * 	their opposite angles (degrees).
+     */
 	std::vector<double> cell_parameters;
+	/**
+     * @brief The vector components of a unit cell.
+     */
 	Eigen::Vector3d v_a, v_b, v_c;
-		
+	
+	/**
+     * @brief Computes the volume of the unit cell.
+     * @return The volume in cubic Angstroms.
+     */
 	double getVolume();
 };
 
-
+/** 
+ * @brief Represents the 3D underlying periodic structure of a crystal.
+ * 
+ * Allows the unit cell parameters reduction through Niggli's algorithm.
+ * 
+ * Example:
+ * ```
+ * Lattice lattice;
+ * int extension = 3;
+ * 
+ * lattice.setCellParameters({10, 10, 10, 90, 90, 90});
+ * lattice.updateParametersToReducedMode();
+ * ```
+ * If unit cell reduction is not needed use the following instead
+ * ```
+ * lattice.updateParametersToOriginalMode();
+ * ```
+ * Then span the 3D lattice by `extension` and retrieve the periodic points
+ * ```
+ * lattice.spanTheLattice(extension);
+ * std::vector<Eigen::Vector3d> pointcloud = ppc.getPointCloud();
+ * ```
+ */
 class Lattice : public LatticeUnitCell, public PeriodicPointCloud {
 private:	
-	//	Update the cell parameters (lengths, angles and cartesian vectors) from Cif Document this->doc
+	
 	void updateCellParameters();
-		
-	//	Update and reduce the cell parameters (lengths, angles and cartesian vectors) from Cif Document this->doc
 	bool updateReducedCellParameters();
 
 public:
 	Lattice() : PeriodicPointCloud(3) {};
 
+	/**
+	 * @brief Gets the cell parameters that identify a lattice.
+	 * @return The vector of cell parameters.
+	 */
 	std::vector<double> getCellParameters();
 
+	/**
+	 * @brief Sets the six cell parameters that identify the unit cell.
+	 * @param cell_params: Unit cell parameters in the order
+     * 	`{||a||, ||b||, ||c||, alpha, beta, gamma}`.
+     * 	The first three values are edge lengths and the last three are
+     * 	their opposite angles (degrees).
+	 */
 	void setCellParameters(std::vector<double> cell_params);
 
-	//	Update the Lattice to Niggli reduced mode
+	/**
+     * @brief Updates the vector components to the Reduced Unit Cell system.
+     */
 	bool updateParametersToReducedMode();
 
-	/*
-	*	Update the Lattice to Original mode, only cell vectors are updated.
-	*	Use spanTheLattice to recalculate points
-	*/
+	/**
+     * @brief Updates the vector components to the Unit Cell system.
+     */
 	void updateParametersToOrginalMode();
 
-	/*
-	*	Generate points in the Lattice around the origin by n copies in all three dimensions
-	*	param n: number of unit cells for each direction
-	*	param positive: If true unit cell will be extended towards positive directions
-	*/
+	/**
+	 * @brief Generates the point cloud of a Lattice around the origin.
+	 * @param n: Extend the periodic point cloud of a lattice by `n`.
+	 * @param positive: If True, the unit cell will be extended only towards positive directions
+	 */
 	void spanTheLattice(int n, bool positive = false);
 
-	// Clear the instance of the Lattice
+	/**
+     * @brief Clear the instance of a Lattice.
+     */
 	void clearTheLattice();
 };
 

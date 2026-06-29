@@ -22,17 +22,17 @@ double roundToNthDecimal(double i, int n) {
 	return std::round(i * n * 10)/(n * 10);
 }
 
-Eigen::Matrix3d getCartesianSystem(std::vector<double> params) {
+Eigen::Matrix3d getCartesianSystem(std::vector<double> cell_parameters) {
 	
-	assert(params.size() == 6);
+	assert(cell_parameters.size() == 6);
 
 	Eigen::Matrix3d vector_matrix;
-	double a_norm = params[0],
-		b_norm = params[1],
-		c_norm = params[2],
-		alpha = params[3],
-		beta = params[4],
-		gamma = params[5],
+	double a_norm = cell_parameters[0],
+		b_norm = cell_parameters[1],
+		c_norm = cell_parameters[2],
+		alpha = cell_parameters[3],
+		beta = cell_parameters[4],
+		gamma = cell_parameters[5],
 		rad_alpha = alpha * pi / 180,
 		rad_beta = beta * pi / 180,
 		rad_gamma = gamma * pi / 180;
