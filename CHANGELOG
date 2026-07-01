@@ -1,5 +1,6 @@
 # Project changes
 
+    - Add tests on Niggli's reduced unit cell
     - Updated docstrings
 ## [0.1.0]
     - Bump periodic_point_cloud dep to 0.1.1
