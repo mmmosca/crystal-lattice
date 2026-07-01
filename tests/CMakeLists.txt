@@ -13,6 +13,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
     tests
     test_crystalattice.cpp
+    test_unitcellreduction.cpp
 )
 
 target_link_libraries(
