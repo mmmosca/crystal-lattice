@@ -1,5 +1,6 @@
 # Project changes
 
+    - Radians in std functions
     - Add tests on Niggli's reduced unit cell
     - Updated docstrings
 ## [0.1.0]
