@@ -43,9 +43,9 @@ TEST_P(ReducedParameterizedTest, NiggliReducedMode)
     double a = lattice.cell_parameters[0],
         b = lattice.cell_parameters[1],
         c = lattice.cell_parameters[2],
-        alpha = lattice.cell_parameters[3],
-        beta = lattice.cell_parameters[4],
-        gamma = lattice.cell_parameters[5];
+        alpha = lattice.cell_parameters[3] * pi / 180,
+        beta = lattice.cell_parameters[4] * pi / 180,
+        gamma = lattice.cell_parameters[5] * pi / 180;
         
     EXPECT_LE(std::abs(a * std::cos(gamma)), b/2);
     EXPECT_LE(std::abs(b * std::cos(gamma)), a/2);
